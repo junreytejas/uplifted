@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "pure-lantern-450601-s8",
+    "uplifted-db": "pure-lantern-450601-s8"
+  },
+  "targets": {},
+  "etags": {}
+}
