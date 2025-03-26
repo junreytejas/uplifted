@@ -1,14 +1,19 @@
 import { Injectable } from '@nestjs/common';
+
 import * as admin from 'firebase-admin';
-import * as serviceAccount from './firebase-admin.json';
 
 @Injectable()
 export class FirebaseConfigService {
   private app: admin.app.App;
   constructor() {
     this.app = admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
-      databaseURL: 'https://pure-lantern-450601-s8.firebaseio.com',
+      credential: admin.credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID || 'your-default-project-id',
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey:
+          process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n') || '',
+      } as admin.ServiceAccount),
+      databaseURL: process.env.FIREBASE_DATABASE_URL,
     });
   }
   getApp(): admin.app.App {
