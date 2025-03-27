@@ -23,7 +23,7 @@ steps:
       - '--allow-unauthenticated'
 
 # Specify the logs bucket
-logsBucket: NONE
+# logsBucket: NONE
 
 # Specify logging options
 options:
