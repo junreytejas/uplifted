@@ -22,10 +22,12 @@ steps:
       - 'us-central1'
       - '--allow-unauthenticated'
 
-#
-
 # Specify the logs bucket
 logsBucket: NONE
+
+# Specify logging options
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 # Timeout for the build process
 timeout: '1200s'
