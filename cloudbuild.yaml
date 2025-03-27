@@ -27,8 +27,5 @@ substitutions:
   _SERVICE_NAME: 'uplifted-backend-service'
   _REGION: 'us-central1'
 
-# Specify the service account to use (optional)
-# serviceAccount: your-service-account@your-project-id.iam.gserviceaccount.com
-
 # Timeout for the build process
 timeout: '1200s'
