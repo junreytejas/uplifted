@@ -5,10 +5,12 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { RequestInterceptor } from './modules/common/interceptors/request/request.interceptor';
 import { UsersModule } from './modules/internal/users/users.module';
 import { AuthModule } from './modules/services/auth/auth.module';
 import { FirebaseModule } from './modules/services/firebase/firebase.module';
 import { VersionModule } from './modules/system/version/version.module';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -23,6 +25,12 @@ import { VersionModule } from './modules/system/version/version.module';
     VersionModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RequestInterceptor,
+    },
+  ],
 })
 export class AppModule {}

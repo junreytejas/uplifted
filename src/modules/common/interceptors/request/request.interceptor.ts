@@ -49,6 +49,8 @@ export class RequestInterceptor implements NestInterceptor {
 
       httpRequest.contextParams = rest;
 
+      console.warn('request:', httpRequest.originalUrl);
+
       return next.handle().pipe(map((request) => request));
     } catch (error) {
       throw handleErrorResponse(error);
