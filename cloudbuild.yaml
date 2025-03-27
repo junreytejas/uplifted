@@ -27,5 +27,6 @@ substitutions:
   _SERVICE_NAME: 'uplifted-backend-service'
   _REGION: 'us-central1'
 
-# Timeout for the build process
+# Timeout for the build process.
+# not sure what else to do
 timeout: '1200s'
