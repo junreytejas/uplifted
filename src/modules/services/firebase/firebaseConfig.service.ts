@@ -8,8 +8,7 @@ export class FirebaseConfigService {
   constructor() {
     this.app = admin.initializeApp({
       credential: admin.credential.cert({
-        projectId:
-          process.env._FIREBASE_PROJECT_ID || 'your-default-project-id',
+        projectId: process.env._FIREBASE_PROJECT_ID,
         clientEmail: process.env._FIREBASE_CLIENT_EMAIL,
         privateKey:
           process.env._FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n') || '',
