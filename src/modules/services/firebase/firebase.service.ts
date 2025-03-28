@@ -11,6 +11,9 @@ export class FirebaseService {
 
   private initFirestore() {
     this.firestore = this.firebaseConfigService.getApp().firestore();
+    this.firestore.settings({
+      ignoreUndefinedProperties: true, // Enable this setting
+    });
   }
   async verifyIdToken(idToken: string): Promise<auth.DecodedIdToken> {
     try {

@@ -3,13 +3,15 @@ import { FirebaseService } from 'src/modules/services/firebase/firebase.service'
 
 @Injectable()
 export class UsersService {
-  private firestore;
+  private firestore: FirebaseFirestore.Firestore;
   constructor(private readonly firebase: FirebaseService) {
     this.firestore = this.firebase.getFirestore();
   }
 
   async create(data: any) {
-    return await this.firestore.collection('users').add(data);
+    const docRef = await this.firestore.collection('users').add(data);
+    const doc = await docRef.get();
+    return { id: doc.id, ...doc.data() };
   }
 
   async findAll() {
@@ -30,7 +32,7 @@ export class UsersService {
     return await this.firestore.collection('users').doc(id).update(data);
   }
 
-  async remove(id: number) {
-    return await this.firestore.collection('users').doc(id).delete();
-  }
+  // async remove(id: number) {
+  //   return await this.firestore.collection('users').doc(id).delete();
+  // }
 }
